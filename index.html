@@ -1,957 +1,478 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>会計DXサポート｜会計事務所専門DX・自動化コンサルティング</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="description" content="会計事務所・税理士事務所のためのDX・業務自動化サポート。クラウド会計導入、Excel・VBA・RPAによる自動化、業務フロー設計までワンストップで支援します。">
-
-  <!-- Google tag (gtag.js) - Google Ads: AW-881007440 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-881007440"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-881007440');
-  </script>
-
-  <!-- User Heat Tag -->
-  <script type="text/javascript">
-    (function(add, cla) {
-      window['UserHeatTag'] = cla;
-      window[cla] = window[cla] || function() {
-        (window[cla].q = window[cla].q || []).push(arguments)
-      }, window[cla].l = 1 * new Date();
-      var ul = document.createElement('script');
-      var tag = document.getElementsByTagName('script')[0];
-      ul.async = 1;
-      ul.src = add;
-      tag.parentNode.insertBefore(ul, tag);
-    })('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');
-    _uhtracker({id: 'uh8zRvUb2Y'});
-  </script>
-  <!-- End User Heat Tag -->
-
-  <style>
-    :root {
-      --primary: #004aad;
-      --primary-light: #e6f0ff;
-      --accent: #ff8c3a;
-      --bg: #f6f7fb;
-      --text-main: #222;
-      --text-sub: #555;
-      --max-width: 960px;
-      --radius: 10px;
-      --shadow-soft: 0 10px 25px rgba(0,0,0,0.06);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "YuGothic", "游ゴシック体", "Meiryo", sans-serif;
-      color: var(--text-main);
-      background: white;
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #eee;
-    }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 16px;
-    }
-
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .logo-sub {
-      display: block;
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    nav ul {
-      display: flex;
-      gap: 16px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 13px;
-    }
-
-    nav a {
-      padding: 6px 0;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 50%, #e8f3ff 100%);
-      border-bottom: 1px solid #eee;
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 40px 16px 32px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 24px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      background: var(--primary);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 26px;
-      margin: 8px 0 8px;
-    }
-
-    .hero-en {
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .hero-lead {
-      font-size: 15px;
-      color: var(--text-sub);
-      margin-bottom: 12px;
-    }
-
-    .hero-list {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin: 0 0 18px;
-      padding-left: 18px;
-    }
-
-    .hero-list li {
-      margin-bottom: 4px;
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      font-size: 14px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: var(--accent);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 18px;
-      font-size: 13px;
-      border-radius: 999px;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      background: #fff;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-top: 6px;
-    }
-
-    .hero-right {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow-soft);
-      font-size: 12px;
-    }
-
-    .hero-right-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .hero-right-sub {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .check-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 8px;
-    }
-
-    .check-list li::before {
-      content: "✔";
-      color: var(--accent);
-      margin-right: 4px;
-    }
-
-    .check-list li {
-      margin-bottom: 4px;
-    }
-
-    .section {
-      padding: 40px 16px 32px;
-    }
-
-    .section:nth-of-type(even) {
-      background: var(--bg);
-    }
-
-    .section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .sec-title {
-      font-size: 20px;
-      margin: 0 0 4px;
-    }
-
-    .sec-title-en {
-      font-size: 11px;
-      color: var(--text-sub);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
-    }
-
-    .sec-lead {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-bottom: 20px;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid #ddd;
-      margin-right: 4px;
-      margin-bottom: 4px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-    }
-
-    .card-header {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
-
-    .card-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .card-title-en {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .small-note {
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .list-dash {
-      padding-left: 16px;
-      margin: 0;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .list-dash li {
-      margin-bottom: 4px;
-    }
-
-    .reason-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap: 16px;
-    }
-
-    .reason-num {
-      font-size: 11px;
-      color: var(--primary);
-      margin-bottom: 2px;
-    }
-
-    .reason-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .profile-wrap {
-      display: grid;
-      grid-template-columns: 140px minmax(0,1fr);
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .profile-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #ddd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: #777;
-      margin-bottom: 4px;
-    }
-
-    .profile-name {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .profile-name-en {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-bottom: 6px;
-    }
-
-    .profile-meta {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .flow-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 12px;
-      font-size: 12px;
-    }
-
-    .flow-step {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 12px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .flow-step-num {
-      font-size: 11px;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
-
-    .flow-step-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .qa-item {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 12px 14px;
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .qa-q {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .qa-q::before {
-      content: "Q.";
-      color: var(--primary);
-      margin-right: 4px;
-    }
-
-    .qa-a::before {
-      content: "A.";
-      color: var(--accent);
-      margin-right: 4px;
-    }
-
-    .contact-box {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.5fr) minmax(0,1.3fr);
-      gap: 16px;
-    }
-
-    form {
-      display: grid;
-      gap: 10px;
-    }
-
-    label {
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 13px;
-      font-family: inherit;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .input-note {
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .contact-sub {
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-bottom: 10px;
-    }
-
-    .contact-info {
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .tel {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .line-btn {
-      display: inline-block;
-      font-size: 12px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #06c755;
-      color: #fff;
-      margin-top: 4px;
-    }
-
-    .area-box {
-      font-size: 13px;
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 12px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    footer {
-      background: #111;
-      color: #bbb;
-      padding: 20px 16px 30px;
-      font-size: 11px;
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .footer-links {
-      margin-bottom: 8px;
-    }
-
-    .footer-links a {
-      color: #bbb;
-      margin-right: 12px;
-      font-size: 11px;
-    }
-
-    @media (max-width: 720px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-right {
-        order: -1;
-      }
-      nav ul {
-        display: none; /* 必要ならスマホ用メニューを後で追加 */
-      }
-      .profile-wrap {
-        grid-template-columns: 1fr;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会計DX・業務効率化サポート | 元銀行系SE×税理士法人スタッフ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Base Settings --- */
+        :root {
+            --primary-color: #0f2350; /* 参考サイトに近い深い紺色 */
+            --accent-color: #c5a059;  /* 権威性のあるゴールド */
+            --accent-hover: #e6c885;
+            --text-color: #333;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--accent-color); }
+        .font-bold { font-weight: 700; }
+        .section-padding { padding: 80px 0; }
+        .pc-only { display: block; }
+        .sp-only { display: none; }
+
+        @media (max-width: 768px) {
+            .pc-only { display: none; }
+            .sp-only { display: block; }
+            .section-padding { padding: 50px 0; }
+        }
+
+        /* --- Components --- */
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #b8860b 0%, #ffd700 100%);
+            color: #000;
+            font-weight: 900;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.6);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        .header-cta {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- Hero Section (FV) --- */
+        .hero {
+            background: linear-gradient(rgba(15, 35, 80, 0.9), rgba(15, 35, 80, 0.9)), url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80'); /* 会計・ITイメージ画像 */
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding-top: 140px; /* Header height + spacing */
+            padding-bottom: 80px;
+            text-align: center;
+        }
+        
+        /* 権威性バッジエリア */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .badge {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            background: linear-gradient(to right, #c5a059, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            font-size: 3.2rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* --- Trouble Section --- */
+        .trouble {
+            background-color: var(--bg-light);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+        }
+        
+        .trouble-list {
+            background: var(--white);
+            padding: 40px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            position: relative;
+        }
+        .trouble-list::before {
+            content: 'CHECK';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: var(--accent-color);
+            padding: 0 20px;
+            font-weight: bold;
+        }
+        .trouble-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 15px;
+        }
+        .trouble-item i {
+            color: #d32f2f;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        /* --- Reason/Strong Points --- */
+        .reason {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .reason .section-title {
+            color: var(--white);
+        }
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .reason-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .reason-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .reason-head {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* --- Profile (My Specs) --- */
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .profile-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        .profile-img img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .profile-content {
+            flex: 1.5;
+            min-width: 300px;
+        }
+        .profile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .profile-table th, .profile-table td {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 10px;
+            text-align: left;
+        }
+        .profile-table th {
+            width: 30%;
+            background-color: #f9f9f9;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .exam-status {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        .cta-box {
+            background: var(--white);
+            border: 3px solid var(--accent-color);
+            padding: 50px 20px;
+            border-radius: 10px;
+        }
+        .cta-tel {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin: 20px 0;
+            display: block;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #aaa;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero h1 span { font-size: 2.2rem; }
+            .badge { font-size: 0.7rem; padding: 3px 8px; }
+            .cta-tel { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="nav-inner">
-    <div>
-      <div class="logo">会計DXサポート</div>
-      <span class="logo-sub">Accounting DX & Automation Consulting for Firms</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">はじめに</a></li>
-        <li><a href="#service">サービス</a></li>
-        <li><a href="#merit">選ばれる理由</a></li>
-        <li><a href="#flow">ご相談の流れ</a></li>
-        <li><a href="#profile">代表</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <span class="badge">会計事務所専門 / Online Nationwide</span>
-      <h1>「紙とExcel地獄」から卒業する<br>会計DX・自動化フルサポート</h1>
-      <p class="hero-en">Upgrade your accounting firm with practical DX & automation support.</p>
-      <p class="hero-lead">
-        クラウド会計導入・業務フロー整理・Excel/VBA・RPAによる自動化まで、<br>
-        現場目線で「残業を減らし、ミスを減らし、利益を増やす」DXを伴走支援します。
-      </p>
-      <ul class="hero-list">
-        <li>紙の資料とメール添付で、所内がいつもパンクしている</li>
-        <li>クラウド会計は入れたが、所内運用が定着していない</li>
-        <li>入力作業が多く、職員の残業時間を何とか減らしたい</li>
-        <li>「DXしたい」が、何から手を付けるべきかわからない</li>
-      </ul>
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">30分の無料オンライン相談を予約する</a>
-        <a href="#service" class="btn-outline">サービス内容を見る</a>
-      </div>
-      <div class="hero-note">※税務申告そのものではなく、会計事務所の業務DX・効率化支援が対象です。</div>
-    </div>
-
-    <div class="hero-right">
-      <div class="hero-right-title">まずは「現状のモヤモヤ整理」から。</div>
-      <div class="hero-right-sub">First, let's clarify your current issues together.</div>
-      <ul class="check-list">
-        <li>現状ヒアリング・課題の見える化</li>
-        <li>貴所に合うDXロードマップの簡易作成</li>
-        <li>おすすめツール・自動化ポイントのご提案</li>
-      </ul>
-      <p class="small-note">
-        30〜45分のオンライン面談にて、「今どこにボトルネックがあるのか？」を一緒に棚卸しします。<br>
-        そのうえで、御所の規模・スタッフ構成・顧問先の特徴に合わせたDXの優先順位をご提案します。
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">会計DXサポートについて</h2>
-    <div class="sec-title-en">ABOUT</div>
-    <p class="sec-lead">
-      会計事務所のDXは、「最新ツールを入れれば終わり」ではありません。<br>
-      現場のフロー設計、所内ルール、職員教育、クライアントとのやり取り──
-      これらを一体として設計しないと、むしろ混乱が増えてしまいます。<br><br>
-      当サポートは、<b>会計 × IT / 自動化</b>の両方に強いコンサルタントが、
-      「小さく始めて、確実に定着させるDX」をモットーに伴走します。
-    </p>
-    <div>
-      <span class="pill">クラウド会計導入</span>
-      <span class="pill">Excel・VBA・RPA自動化</span>
-      <span class="pill">業務フロー設計</span>
-      <span class="pill">所内ルール整備</span>
-      <span class="pill">職員研修</span>
-      <span class="pill">ダッシュボード/KPI設計</span>
-    </div>
-  </div>
-</section>
-
-<section id="service" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">サービス内容</h2>
-    <div class="sec-title-en">SERVICES</div>
-    <p class="sec-lead">
-      貴所の状況に合わせて、スポット支援から継続伴走まで柔軟に対応します。<br>
-      料金は目安ですので、正式なお見積りは無料相談時に行います。
-    </p>
-
-    <div class="card-grid">
-      <!-- Service 1 -->
-      <div class="card">
-        <div class="card-header">01　クラウド会計・DX設計パック</div>
-        <div class="card-title">クラウド会計が所内に「根付く」ための設計支援</div>
-        <div class="card-title-en">Cloud Accounting & DX Basic Design</div>
-        <div class="price">目安：33万円〜（税別）</div>
-        <ul class="list-dash">
-          <li>現状ヒアリング・業務フローの可視化</li>
-          <li>クラウド会計・証憑保存サービスなどの選定支援</li>
-          <li>所内ルール・分担・チェックフローの設計</li>
-          <li>職員向け運用マニュアルのたたき台作成</li>
-        </ul>
-        <p class="small-note">
-          ※事務所規模や拠点数により変動します。<br>
-          ※既にクラウド会計を導入済みの場合は「再設計」からのご支援も可能です。
-        </p>
-      </div>
-
-      <!-- Service 2 -->
-      <div class="card">
-        <div class="card-header">02　Excel・VBA/RPA自動化パック</div>
-        <div class="card-title">入力・チェック作業を「ボタン1つ」にする自動化</div>
-        <div class="card-title-en">Automation for Routine Tasks</div>
-        <div class="price">目安：15万円〜／1テーマ（税別）</div>
-        <ul class="list-dash">
-          <li>既存Excelの棚卸し・テンプレート整理</li>
-          <li>VBA・関数・Power Query 等による自動化</li>
-          <li>仕訳インポートファイルの自動生成</li>
-          <li>RPA（ロボット）導入の検討・簡易シナリオ作成</li>
-        </ul>
-        <p class="small-note">
-          ※「年調・法定調書」「決算チェック」「請求書発行」など、テーマごとに設計します。
-        </p>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="card">
-        <div class="card-header">03　DX伴走顧問</div>
-        <div class="card-title">毎月少しずつ進める「中長期DXプロジェクト」支援</div>
-        <div class="card-title-en">Ongoing DX Advisory</div>
-        <div class="price">月額：5万円〜（税別）</div>
-        <ul class="list-dash">
-          <li>月1〜2回のオンライン定例ミーティング</li>
-          <li>DXロードマップの進捗管理・優先順位付け</li>
-          <li>Slack/Chatwork 等でのチャット相談</li>
-          <li>所内メンバー向けミニ勉強会の実施</li>
-        </ul>
-        <p class="small-note">
-          ※6ヶ月〜の継続契約を基本としています。<br>
-          ※「まずは3ヶ月のお試し顧問」プランもご用意可能です。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="merit" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">当サポートが選ばれる理由</h2>
-    <div class="sec-title-en">WHY US</div>
-
-    <div class="reason-grid">
-      <div class="card">
-        <div class="reason-num">Reason 01</div>
-        <div class="reason-title">「現場の手触り」を知る会計DX</div>
-        <p class="small-note">
-          単なるシステム導入ではなく、<b>記帳・決算・年調・相続などの現場フロー</b>を理解したうえでDXを設計します。<br>
-          「このチェックを落とすと怖い」「ここだけは紙で残したい」といった現場の感覚も尊重しながら、
-          無理のない変化を一緒に作っていきます。
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="reason-num">Reason 02</div>
-        <div class="reason-title">IT・自動化にも強い「二刀流」</div>
-        <p class="small-note">
-          エンジニアバックグラウンドを活かし、<b>Excel/VBA・関数・API連携・RPA</b>など、
-          ツール側の知識も踏まえた提案が可能です。<br>
-          「この作業、そもそもツール側で自動化できますよ」という視点から、
-          余計な工数や二重入力を徹底的に削っていきます。
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="reason-num">Reason 03</div>
-        <div class="reason-title">小さく試し、成功体験から広げる</div>
-        <p class="small-note">
-          最初から大掛かりな改革は行いません。<br>
-          まずは<b>1〜2業務で小さくテスト</b>し、効果が出たものを所内全体に横展開していくスタイルです。<br>
-          職員の方々が「本当に楽になった」と感じられる成功体験を重ねることで、
-          DXが自然と「自分ごと」として浸透していきます。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="flow" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">ご相談の流れ</h2>
-    <div class="sec-title-en">PROCESS</div>
-
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="flow-step-num">STEP 01</div>
-        <div class="flow-step-title">お問い合わせ</div>
-        <p class="small-note">
-          本ページ下部のお問い合わせフォーム、またはメール・LINEよりご連絡ください。<br>
-          ご希望があれば、秘密保持契約（NDA）の締結も可能です。
-        </p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">STEP 02</div>
-        <div class="flow-step-title">無料オンライン相談（30〜45分）</div>
-        <p class="small-note">
-          現状の業務フロー・お悩み・利用中ツールなどをヒアリングし、<br>
-          DX・自動化の「入口」となるポイントを一緒に整理します。
-        </p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">STEP 03</div>
-        <div class="flow-step-title">ご提案・お見積り</div>
-        <p class="small-note">
-          ヒアリング内容をもとに、<b>優先順位・期間・費用感</b>を整理したご提案書を作成します。<br>
-          ご予算に合わせたプラン調整も柔軟に対応いたします。
-        </p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-num">STEP 04</div>
-        <div class="flow-step-title">ご契約・サポート開始</div>
-        <p class="small-note">
-          ご提案内容にご納得いただけましたらご契約となります。<br>
-          初回キックオフミーティングにて、タスクの洗い出し・スケジュールをすり合わせ、
-          実際のDXプロジェクトをスタートします。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="profile" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">代表プロフィール</h2>
-    <div class="sec-title-en">PROFILE</div>
-
-    <div class="profile-wrap">
-      <div>
-        <div class="profile-photo">Photo<br>Coming Soon</div>
-        <div class="profile-meta">※写真・ロゴなどは後ほど差し替え予定のプレースホルダーです。</div>
-      </div>
-      <div>
-        <div class="profile-name">〇〇 〇〇（仮）</div>
-        <div class="profile-name-en">DX Consultant / Accounting & IT Background</div>
-        <div class="profile-meta">
-          国立大学 理系学部卒。エンジニアとしてシステム開発・業務改善に従事したのち、<br>
-          会計・税務の世界に転身。会計・税法の学習と並行しながら、<br>
-          会計事務所向けのDX・自動化支援を行っている。<br><br>
-          「現場の負担を減らし、思考する時間を増やすDX」をテーマに、<br>
-          クラウド会計・Excel/VBA・RPA・AIツールを組み合わせた、<br>
-          実務に直結するサポートを行う。
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Accounting DX</div>
+            <a href="#contact" class="header-cta"><i class="far fa-envelope"></i> 無料相談はこちら</a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">対応エリア</h2>
-    <div class="sec-title-en">SERVICE AREA</div>
-
-    <div class="area-box">
-      <p>
-        基本的には<b>オンライン（Zoom / Google Meet 等）</b>にて、全国の会計事務所さまに対応しております。<br>
-        首都圏（東京・神奈川・埼玉・千葉）については、条件により訪問でのご支援も可能です。
-      </p>
-      <p class="small-note">
-        ※訪問をご希望の場合、別途交通費・日当を頂戴する場合がございます。<br>
-        ※オンライン前提のため、地方・離島の事務所さまもお気軽にご相談ください。
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">よくあるご質問</h2>
-    <div class="sec-title-en">FAQ</div>
-
-    <div class="qa-item">
-      <div class="qa-q">最初の無料相談だけで終わっても大丈夫ですか？</div>
-      <div class="qa-a small-note">
-        はい、問題ございません。<br>
-        無料相談では、現状の業務フローやお悩みの棚卸しと、DXの優先順位付けまでを行います。<br>
-        ご提案内容を持ち帰って所内で検討いただき、「タイミングが合えばお願いしたい」という形でも大丈夫です。
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">どの会計ソフトを使っていても対応してもらえますか？</div>
-      <div class="qa-a small-note">
-        メジャーなクラウド会計・オンプレ会計ソフトであれば、基本的に対応可能です。<br>
-        ただし、極めて特殊な業種特化システムの場合は、事前に仕様を確認させていただきながら進めます。
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">情報漏えいが怖いのですが、機密保持はどのように行っていますか？</div>
-      <div class="qa-a small-note">
-        ご希望があれば、秘密保持契約（NDA）を締結したうえでのご支援も可能です。<br>
-        また、顧問先名や個人情報が分からない形でデータを加工いただいたうえで、
-        テンプレート設計・自動化のご相談を行うこともできます。
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <div class="section-inner">
-    <h2 class="sec-title">お問い合わせ</h2>
-    <div class="sec-title-en">CONTACT</div>
-
-    <div class="contact-box contact-grid">
-      <div>
-        <p class="contact-sub">
-          会計DX・自動化に関するご相談、サービス内容や料金に関するご質問など、<br>
-          下記フォームよりお気軽にお問い合わせください。
-        </p>
-
-        <!-- ★ メールフォーム部分：GitHub Pagesならフォームサービス(Formspree等)のactionを後から設定してください -->
-        <form method="post" action="">
-          <div>
-            <label for="name">お名前（必須） / Name *</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div>
-            <label for="office">事務所名 / Firm Name</label>
-            <input type="text" id="office" name="office">
-          </div>
-          <div>
-            <label for="email">メールアドレス（必須） / Email *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div>
-            <label for="tel">お電話番号 / Phone</label>
-            <input type="text" id="tel" name="tel">
-          </div>
-          <div>
-            <label for="detail">ご相談内容 / Message</label>
-            <textarea id="detail" name="detail" placeholder="例）クラウド会計は導入済みだが、所内運用が定着していない。年調・法定調書の自動化を検討したい など"></textarea>
-          </div>
-          <div>
-            <label for="prefer">ご連絡方法のご希望 / Preferred Contact</label>
-            <input type="text" id="prefer" name="prefer" placeholder="例）メール希望、平日〇時〜〇時なら電話可 など">
-          </div>
-          <button type="submit" class="btn-primary">入力内容を送信する</button>
-          <div class="input-note">
-            ※まだ送信先のメール処理は設定されていません。フォームサービスを利用する場合は、<br>
-            &nbsp;&nbsp;このフォームの <code>action=""</code> 部分を書き換えてご利用ください。
-          </div>
-        </form>
-      </div>
-
-      <div>
-        <div class="contact-info">
-          <div>お急ぎの方はこちら</div>
-          <div class="tel">TEL：000-0000-0000（仮）</div>
-          <div class="small-note">受付時間：平日 9:00〜18:00</div>
+    <section class="hero">
+        <div class="container">
+            <div class="badge-container">
+                <span class="badge">国立工学部ロボット専攻</span>
+                <span class="badge">元最大手銀行系SE</span>
+                <span class="badge">現税理士法人勤務</span>
+                <span class="badge">VBA/MOS上級</span>
+            </div>
+            <h1>ITと会計の「翻訳者」が導く<br><span>失敗しない会計DX</span></h1>
+            <p>システム会社と顧問税理士の「隙間」を埋める、<br class="sp-only">実務直結のIT支援。</p>
+            <a href="#contact" class="btn-cta">30分無料オンライン相談を予約</a>
         </div>
-        <div class="contact-info">
-          <div>LINEでのご相談</div>
-          <a href="#" class="line-btn">LINEで友だち追加（準備中）</a>
-          <div class="small-note">※QRコード・リンクは取得後に差し替えてください。</div>
-        </div>
-        <div class="contact-info">
-          <div>メールアドレス</div>
-          <div class="small-note">info@example.com（仮）</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-links">
-      <a href="#privacy">個人情報の取り扱い</a>
-      <a href="#contact">お問い合わせ</a>
-    </div>
-    <div>© <span id="year"></span> 会計DXサポート</div>
-  </div>
-</footer>
+    <section class="section-padding trouble">
+        <div class="container">
+            <h2 class="section-title">このようなお悩み、<br class="sp-only">抱えていませんか？</h2>
+            <div class="trouble-list">
+                <div class="trouble-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>インボイス・電帳法対応で、経理の手間が逆増してしまった</div>
+                </div>
+                <div class="trouble-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>クラウド会計を入れたいが、顧問税理士がITに疎く相談できない</div>
+                </div>
+                <div class="trouble-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>システム会社の提案は専門用語ばかりで、自社に合うか判断できない</div>
+                </div>
+                <div class="trouble-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>複雑なExcel集計作業が属人化しており、ミスも怖い</div>
+                </div>
+                <div class="trouble-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>高額なツールを導入したが、現場が使いこなせていない</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  // 年号を自動表示
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <section class="section-padding reason">
+        <div class="container">
+            <h2 class="section-title">選ばれる3つの理由</h2>
+            <div class="reason-grid">
+                <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="reason-head">元・銀行系SEの<br>堅実な技術力</div>
+                    <p>国立理系卒の論理的思考と、ミスが許されない金融システム開発で培ったスキル。システムの選定から、API連携、Excel VBA・RPAロボットによる自動化まで、技術的な最適解を導きます。</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="reason-head">現役・税理士法人勤務の<br>現場感覚</div>
+                    <p>日々の記帳代行や決算の実務を経験。税理士・司法書士を目指し法律・税務を深く学んでいるため、最新の法改正に対応しつつ、「現場が本当に楽になる」フローを構築できます。</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-comments"></i></div>
+                    <div class="reason-head">専門用語を使わない<br>「翻訳」サポート</div>
+                    <p>システム会社の一方的な提案とは違います。ITに苦手意識がある方にも分かりやすく説明し、お客様の業務フローに寄り添って二人三脚で進めます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">代表プロフィール</h2>
+            <div class="profile-container">
+                <div class="profile-img">
+                    <img src="https://reiwabushi.github.io/dxfin/photo.png" alt="プロフィール写真">
+                </div>
+                <div class="profile-content">
+                    <h3 class="font-bold" style="font-size: 1.5rem; margin-bottom: 10px;">会計DX専門コンサルタント　松本 武士</h3>
+                    <p style="margin-bottom: 20px;">
+                        「システムありき」ではなく、「人のためのDX」を。<br>
+                        エンジニアの技術力と、会計人の現場力で、あなたの会社のバックオフィスを強くします。
+                    </p>
+                    
+                    <table class="profile-table">
+                        <tr>
+                            <th>学歴</th>
+                            <td>国立大学 工学部 ロボット専攻 卒業</td>
+                        </tr>
+                        <tr>
+                            <th>経歴</th>
+                            <td>最大手銀行系システムエンジニア<br>（大規模金融システム開発現場）</td>
+                        </tr>
+                        <tr>
+                            <th>現職</th>
+                            <td>税理士法人スタッフ（会計・税務実務）</td>
+                        </tr>
+                        <tr>
+                            <th>保有資格</th>
+                            <td>
+                                ・宅地建物取引士<br>
+                                ・日商簿記2級<br>
+                                ・地方公会計検定<br>
+                                ・MOS Excel上級 (Expert)<br>
+                                ・VBAエキスパート
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>挑戦中</th>
+                            <td>
+                                税理士試験 <span class="exam-status">受験生</span><br>
+                                行政書士試験 <span class="exam-status">受験生</span><br>
+                                司法書士試験 <span class="exam-status">受験生</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">ご提供サービス</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                    <h4 class="font-bold text-gold"><i class="fas fa-cloud"></i> クラウド会計導入支援</h4>
+                    <p class="text-sm">TKC、freeeやマネーフォワードの選定、初期設定、データ移行、社内研修まで丸ごとサポート。</p>
+                </div>
+                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                    <h4 class="font-bold text-gold"><i class="fas fa-robot"></i> Excel業務自動化 (VBA)</h4>
+                    <p class="text-sm">複雑な集計作業をマクロやRPAロボットでボタン一つに。「脱・属人化」を実現します。</p>
+                </div>
+                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                    <h4 class="font-bold text-gold"><i class="fas fa-link"></i> 周辺システム連携</h4>
+                    <p class="text-sm">経費精算、勤怠、請求書システムと会計ソフトのAPI連携構築。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2 style="margin-bottom: 10px;">まずは無料相談で、現状をお聞かせください</h2>
+                <p>ITと会計のプロが、御社に最適な効率化プランを診断します。</p>
+                
+                
+                <a href="https://forms.gle/5tGGccF8VNPsXM7X8" class="btn-cta" style="width: 80%; max-width: 500px;">
+                    <i class="far fa-envelope"></i> 24時間受付 お問い合わせフォーム
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Accounting DX Support. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
