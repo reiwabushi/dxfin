@@ -1,818 +1,957 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>DX会計サポート｜会計事務所・中小企業向け業務改善</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="会計事務所勤務×監査担当×税理士受験生×元エンジニアが提供するDX会計サポート。仕訳・チェック・消費税・Excel・RPA・AI活用まで現場目線で伴走します。単発DXメニューは導入費用・工数削減・回収期間まで明示。">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
-            line-height: 1.7;
-            color: #222;
-            background-color: #f5f7fa;
-        }
-        a {
-            color: #0d5cab;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        header {
-            background-color: #0f172a;
-            color: #fff;
-            padding: 14px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .logo {
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.05em;
-        }
-        nav a {
-            margin-left: 16px;
-            font-size: 13px;
-        }
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #fff;
-            padding: 70px 20px 60px;
-        }
-        .hero-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-            gap: 40px;
-            align-items: center;
-        }
-        .hero-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-        .hero-sub {
-            font-size: 15px;
-            opacity: 0.9;
-            margin-bottom: 24px;
-        }
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        .badge {
-            font-size: 11px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 4px 10px;
-            opacity: 0.9;
-        }
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .btn-primary, .btn-secondary {
-            border-radius: 999px;
-            padding: 10px 20px;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-        .btn-primary {
-            background-color: #38bdf8;
-            color: #0f172a;
-            font-weight: 600;
-        }
-        .btn-secondary {
-            background-color: transparent;
-            border: 1px solid rgba(255,255,255,0.6);
-            color: #e5e7eb;
-        }
-        .hero-side {
-            background: rgba(15,23,42,0.7);
-            border-radius: 16px;
-            padding: 18px 18px 16px;
-            border: 1px solid rgba(148,163,184,0.7);
-            font-size: 13px;
-        }
-        .hero-side h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-        .hero-side ul {
-            padding-left: 18px;
-            margin: 0 0 10px;
-        }
-        .section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 20px 40px;
-        }
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
-        .section-sub {
-            font-size: 13px;
-            color: #6b7280;
-            margin-bottom: 28px;
-        }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 18px 18px 16px;
-            box-shadow: 0 8px 20px rgba(15,23,42,0.07);
-            border: 1px solid #e5e7eb;
-            font-size: 13px;
-        }
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #111827;
-        }
-        .card ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .pill-title {
-            display: inline-block;
-            font-size: 11px;
-            border-radius: 999px;
-            padding: 2px 8px;
-            background-color: #e0f2fe;
-            color: #0369a1;
-            margin-bottom: 8px;
-        }
-        .two-column {
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-            gap: 30px;
-        }
-        .list-check {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-        .list-check li::before {
-            content: "✔";
-            color: #16a34a;
-            margin-right: 6px;
-        }
-        .list-check li {
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-        .table-wrapper {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            background-color: #fff;
-        }
-        th, td {
-            border: 1px solid #e5e7eb;
-            padding: 8px 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f3f4f6;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .flow-steps {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-        .flow-step {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 12px;
-            border: 1px solid #e5e7eb;
-        }
-        .flow-step span {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 6px;
-        }
-        .flow-step strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-        .profile-card {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 18px;
-            border: 1px solid #e5e7eb;
-            font-size: 13px;
-        }
-        .profile-card h3 {
-            margin-top: 0;
-            font-size: 15px;
-        }
-        .profile-meta {
-            font-size: 12px;
-            color: #6b7280;
-            margin-bottom: 8px;
-        }
-        .faq-item {
-            margin-bottom: 16px;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border: 1px solid #e5e7eb;
-            font-size: 13px;
-        }
-        .faq-q {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .cta-box {
-            background-color: #0f172a;
-            color: #e5e7eb;
-            border-radius: 16px;
-            padding: 24px 20px;
-            text-align: center;
-        }
-        .cta-box h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 20px;
-        }
-        .cta-box p {
-            margin-top: 0;
-            margin-bottom: 18px;
-            font-size: 13px;
-        }
-        footer {
-            border-top: 1px solid #e5e7eb;
-            padding: 14px 20px;
-            font-size: 11px;
-            text-align: center;
-            color: #6b7280;
-            background-color: #f9fafb;
-        }
-        .segment-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-        .segment-card {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid #e5e7eb;
-            font-size: 13px;
-        }
-        .segment-card h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-        .segment-card p {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .segment-card a {
-            font-size: 12px;
-            font-weight: 600;
-        }
-        @media (max-width: 900px) {
-            .hero-inner,
-            .two-column,
-            .card-grid,
-            .flow-steps,
-            .segment-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-            header {
-                position: static;
-            }
-            nav a {
-                margin-left: 10px;
-                font-size: 12px;
-            }
-            .hero {
-                padding-top: 40px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>会計DXサポート｜会計事務所専門DX・自動化コンサルティング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="会計事務所・税理士事務所のためのDX・業務自動化サポート。クラウド会計導入、Excel・VBA・RPAによる自動化、業務フロー設計までワンストップで支援します。">
+
+  <!-- Google tag (gtag.js) - Google Ads: AW-881007440 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-881007440"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-881007440');
+  </script>
+
+  <!-- User Heat Tag -->
+  <script type="text/javascript">
+    (function(add, cla) {
+      window['UserHeatTag'] = cla;
+      window[cla] = window[cla] || function() {
+        (window[cla].q = window[cla].q || []).push(arguments)
+      }, window[cla].l = 1 * new Date();
+      var ul = document.createElement('script');
+      var tag = document.getElementsByTagName('script')[0];
+      ul.async = 1;
+      ul.src = add;
+      tag.parentNode.insertBefore(ul, tag);
+    })('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');
+    _uhtracker({id: 'uh8zRvUb2Y'});
+  </script>
+  <!-- End User Heat Tag -->
+
+  <style>
+    :root {
+      --primary: #004aad;
+      --primary-light: #e6f0ff;
+      --accent: #ff8c3a;
+      --bg: #f6f7fb;
+      --text-main: #222;
+      --text-sub: #555;
+      --max-width: 960px;
+      --radius: 10px;
+      --shadow-soft: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "YuGothic", "游ゴシック体", "Meiryo", sans-serif;
+      color: var(--text-main);
+      background: white;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+    }
+
+    nav a {
+      padding: 6px 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 50%, #e8f3ff 100%);
+      border-bottom: 1px solid #eee;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 16px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 8px 0 8px;
+    }
+
+    .hero-en {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .hero-lead {
+      font-size: 15px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+
+    .hero-list {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin: 0 0 18px;
+      padding-left: 18px;
+    }
+
+    .hero-list li {
+      margin-bottom: 4px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      font-size: 13px;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+
+    .hero-right {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+    }
+
+    .hero-right-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-sub {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 8px;
+    }
+
+    .check-list li::before {
+      content: "✔";
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    .check-list li {
+      margin-bottom: 4px;
+    }
+
+    .section {
+      padding: 40px 16px 32px;
+    }
+
+    .section:nth-of-type(even) {
+      background: var(--bg);
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .sec-title {
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+
+    .sec-title-en {
+      font-size: 11px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .sec-lead {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #ddd;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .card-header {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-title-en {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .small-note {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .list-dash {
+      padding-left: 16px;
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .list-dash li {
+      margin-bottom: 4px;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 16px;
+    }
+
+    .reason-num {
+      font-size: 11px;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .reason-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .profile-wrap {
+      display: grid;
+      grid-template-columns: 140px minmax(0,1fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .profile-name-en {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+
+    .profile-meta {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .flow-step {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .flow-step-num {
+      font-size: 11px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .flow-step-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .qa-item {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .qa-q {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .qa-q::before {
+      content: "Q.";
+      color: var(--primary);
+      margin-right: 4px;
+    }
+
+    .qa-a::before {
+      content: "A.";
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    .contact-box {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.3fr);
+      gap: 16px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .input-note {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .contact-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .tel {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .line-btn {
+      display: inline-block;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #06c755;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .area-box {
+      font-size: 13px;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    footer {
+      background: #111;
+      color: #bbb;
+      padding: 20px 16px 30px;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: #bbb;
+      margin-right: 12px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-right {
+        order: -1;
+      }
+      nav ul {
+        display: none; /* 必要ならスマホ用メニューを後で追加 */
+      }
+      .profile-wrap {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <div class="header-inner">
-        <div class="logo">DX会計サポート</div>
-        <nav>
-            <a href="#problems">こんなお悩み</a>
-            <a href="#services">サービス内容</a>
-            <a href="#menu-office">会計事務所向け</a>
-            <a href="#menu-sme">中小企業向け</a>
-            <a href="#contact">お問い合わせ</a>
-        </nav>
+  <div class="nav-inner">
+    <div>
+      <div class="logo">会計DXサポート</div>
+      <span class="logo-sub">Accounting DX & Automation Consulting for Firms</span>
     </div>
+    <nav>
+      <ul>
+        <li><a href="#about">はじめに</a></li>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#merit">選ばれる理由</a></li>
+        <li><a href="#flow">ご相談の流れ</a></li>
+        <li><a href="#profile">代表</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-    <div class="hero-inner">
-        <div>
-            <div class="hero-title">
-                会計事務所勤務 × 監査担当 × 税理士受験生 × 元エンジニアが<br>
-                「現場で本当に使える」DX会計を伴走サポート
-            </div>
-            <div class="hero-sub">
-                会計ソフトの入替や高額システム導入の前に。<br>
-                いまのExcel・会計ソフト・人員を活かしながら、<br>
-                <strong>「手作業の山」→「仕組みで回る状態」</strong>へと少しずつ変えていきます。
-            </div>
-            <div class="hero-badges">
-                <span class="badge">会計事務所勤務・客先訪問監査担当</span>
-                <span class="badge">税理士試験（簿記論・財務諸表論）学習中</span>
-                <span class="badge">国立工学部ロボット専攻出身</span>
-                <span class="badge">Excel・VBA・AIツール活用</span>
-            </div>
-            <div class="hero-cta">
-                <a href="#contact" class="btn-primary">無料オンライン相談を申し込む</a>
-                <a href="#services" class="btn-secondary">サービス内容を見る</a>
-            </div>
-        </div>
-        <div class="hero-side">
-            <h3>まずは小さな「1業務」からDX</h3>
-            <ul>
-                <li>仕訳入力の手作業をテンプレ＋自動化で削減</li>
-                <li>チェック・照合作業を「パターン化」して短縮</li>
-                <li>消費税区分だけをあとから一括で見直す仕組み</li>
-                <li>紙・PDFベースのやり取りを、少しずつデジタルに</li>
-            </ul>
-            <p style="font-size:12px; margin-bottom:0;">
-                「丸投げDX」ではなく、<br>
-                <strong>現場の担当者が回せるレベル</strong>まで落とし込むのが方針です。
-            </p>
-        </div>
+  <div class="hero-inner">
+    <div>
+      <span class="badge">会計事務所専門 / Online Nationwide</span>
+      <h1>「紙とExcel地獄」から卒業する<br>会計DX・自動化フルサポート</h1>
+      <p class="hero-en">Upgrade your accounting firm with practical DX & automation support.</p>
+      <p class="hero-lead">
+        クラウド会計導入・業務フロー整理・Excel/VBA・RPAによる自動化まで、<br>
+        現場目線で「残業を減らし、ミスを減らし、利益を増やす」DXを伴走支援します。
+      </p>
+      <ul class="hero-list">
+        <li>紙の資料とメール添付で、所内がいつもパンクしている</li>
+        <li>クラウド会計は入れたが、所内運用が定着していない</li>
+        <li>入力作業が多く、職員の残業時間を何とか減らしたい</li>
+        <li>「DXしたい」が、何から手を付けるべきかわからない</li>
+      </ul>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">30分の無料オンライン相談を予約する</a>
+        <a href="#service" class="btn-outline">サービス内容を見る</a>
+      </div>
+      <div class="hero-note">※税務申告そのものではなく、会計事務所の業務DX・効率化支援が対象です。</div>
     </div>
+
+    <div class="hero-right">
+      <div class="hero-right-title">まずは「現状のモヤモヤ整理」から。</div>
+      <div class="hero-right-sub">First, let's clarify your current issues together.</div>
+      <ul class="check-list">
+        <li>現状ヒアリング・課題の見える化</li>
+        <li>貴所に合うDXロードマップの簡易作成</li>
+        <li>おすすめツール・自動化ポイントのご提案</li>
+      </ul>
+      <p class="small-note">
+        30〜45分のオンライン面談にて、「今どこにボトルネックがあるのか？」を一緒に棚卸しします。<br>
+        そのうえで、御所の規模・スタッフ構成・顧問先の特徴に合わせたDXの優先順位をご提案します。
+      </p>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-    <h2 class="section-title">ご利用対象</h2>
-    <p class="section-sub">同じ「DX会計」でも、会計事務所と中小企業では課題もお金の流れも少しずつ違います。それぞれに合わせてご提案します。</p>
-    <div class="segment-grid">
-        <div class="segment-card">
-            <h3>会計事務所向けDX</h3>
-            <p>職員・パートさんの残業時間削減、担当替え時の引き継ぎ、チェック体制の標準化など、「事務所の生産性」と「人件費」に直結する改善が中心です。</p>
-            <a href="#menu-office">会計事務所向けメニューを見る →</a>
-        </div>
-        <div class="segment-card">
-            <h3>中小企業・個人事業主向けDX</h3>
-            <p>社長や経理担当の「入力・集計・確認」にかかる時間を減らし、本来の売上活動に時間を回せるようにすることを重視します。</p>
-            <a href="#menu-sme">中小企業向けメニューを見る →</a>
-        </div>
+<section id="about" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">会計DXサポートについて</h2>
+    <div class="sec-title-en">ABOUT</div>
+    <p class="sec-lead">
+      会計事務所のDXは、「最新ツールを入れれば終わり」ではありません。<br>
+      現場のフロー設計、所内ルール、職員教育、クライアントとのやり取り──
+      これらを一体として設計しないと、むしろ混乱が増えてしまいます。<br><br>
+      当サポートは、<b>会計 × IT / 自動化</b>の両方に強いコンサルタントが、
+      「小さく始めて、確実に定着させるDX」をモットーに伴走します。
+    </p>
+    <div>
+      <span class="pill">クラウド会計導入</span>
+      <span class="pill">Excel・VBA・RPA自動化</span>
+      <span class="pill">業務フロー設計</span>
+      <span class="pill">所内ルール整備</span>
+      <span class="pill">職員研修</span>
+      <span class="pill">ダッシュボード/KPI設計</span>
     </div>
+  </div>
 </section>
 
-<section class="section" id="problems">
-    <h2 class="section-title">こんなお悩みはありませんか？</h2>
-    <p class="section-sub">会計事務所でも、中小企業・個人事業主でも、「なんとなく非効率だけど、どこから手をつけていいか分からない」という声を多くいただきます。</p>
-    <div class="two-column">
-        <div>
-            <ul class="list-check">
-                <li>毎月の仕訳入力・チェックに時間を取られ、残業が当たり前になっている</li>
-                <li>スタッフごとにExcelファイル・フォルダのルールがバラバラで引き継ぎが難しい</li>
-                <li>消費税の区分や軽減税率の判断が、毎回「人の勘」に頼っている</li>
-                <li>会計ソフトの機能を使い切れておらず、「エクセル手作業」が増え続けている</li>
-                <li>RPAやAIに興味はあるが、「最初の一歩」が分からないまま時間だけ過ぎている</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>「DXベンダー」ではなく、<br>現場目線のパートナーとして</h3>
-            <p style="margin-top:0;">
-                一般的なシステム会社やコンサルは、どうしても<br>
-                「システムを入れること」がゴールになりがちです。
-            </p>
-            <p>
-                私は現在も会計事務所で<span style="font-weight:600;">客先訪問の監査担当</span>として、
-                <strong>現場・お客様側の両方</strong>に日々立ち会っています。
-            </p>
-            <p>
-                その経験を活かし、<br>
-                <strong>「机上のDX」ではなく、「現場で回るDX」</strong>を一緒に設計します。
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="services">
-    <h2 class="section-title">サービス内容</h2>
-    <p class="section-sub">「まるごとDXプロジェクト」だけでなく、1業務単位・1ファイル単位の小さな改善から対応します。</p>
-
-    <div class="card-grid">
-        <div class="card">
-            <div class="pill-title">会計事務所向けDX伴走</div>
-            <h3>仕訳・チェック・消費税まわりの業務改善</h3>
-            <ul>
-                <li>仕訳入力テンプレートの設計・自動転記（Excel／スプレッドシート）</li>
-                <li>補助簿・試算表・予算実績の照合チェックのパターン化</li>
-                <li>消費税区分・軽減税率の判断フロー図とルール表の作成</li>
-                <li>ブラウザ会計ソフト×簡易RPAによる「あとから税区分一括修正」仕組み作り</li>
-                <li>職員・パートさん向けの操作マニュアル・動画の整備</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="pill-title">単発DXスポット対応</div>
-            <h3>「この1件だけお願いしたい」にも対応</h3>
-            <ul>
-                <li>バラバラなExcelファイルを統合し、1クリック集計できる形に整理</li>
-                <li>月次資料作成の「コピペ作業」をVBA・関数で自動化</li>
-                <li>既存の会計ソフトからのデータ出力～再加工のパターン化</li>
-                <li>試算表や管理資料の「見せ方」テンプレート作成</li>
-                <li>AIツール（ChatGPT等）を業務内で使うためのルール・プロンプト作成</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="pill-title">中小企業・個人事業主向け</div>
-            <h3>「経理が苦手」な社長の右腕として</h3>
-            <ul>
-                <li>クラウド会計ソフトの初期設定・科目設定のアドバイス</li>
-                <li>レシート・請求書の整理フローと、入力方法の標準化</li>
-                <li>資金繰り・簡易予算のExcelテンプレート作成</li>
-                <li>税理士・社労士・専門家との情報共有しやすい資料設計</li>
-                <li>「社長が見るべき数字」を1枚にまとめたダッシュボードの作成</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="menu">
-    <h2 class="section-title">単発DXメニュー例（お金のインパクトベース）</h2>
-    <p class="section-sub">
-        「いくらかかって、どれくらい時間とお金が戻ってくるのか？」が分かるように、<br>
-        会計事務所向けと中小企業向けで、導入コスト・工数削減・回収期間の目安を書き分けています。<br>
-        ※金額・時間はあくまで一例であり、ボリューム・難易度により変動します。
+<section id="service" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">サービス内容</h2>
+    <div class="sec-title-en">SERVICES</div>
+    <p class="sec-lead">
+      貴所の状況に合わせて、スポット支援から継続伴走まで柔軟に対応します。<br>
+      料金は目安ですので、正式なお見積りは無料相談時に行います。
     </p>
 
-    <!-- 会計事務所向け -->
-    <h3 id="menu-office" class="section-title" style="font-size:18px; margin-top:10px;">会計事務所向け 単発DXメニュー</h3>
-    <p class="section-sub">「職員・パートさんの残業時間」と「人件費」に直結する部分を優先的に改善します。</p>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-            <tr>
-                <th>メニュー名</th>
-                <th>導入コスト目安（税込）</th>
-                <th>削減できる作業時間の目安</th>
-                <th>人件費削減イメージ／回収期間</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>仕訳入力テンプレート作成</td>
-                <td>5万～15万円</td>
-                <td>
-                    担当者1～3名分の入力を想定し、<br>
-                    毎月合計5～20時間程度の削減。
-                </td>
-                <td>
-                    時給3,000円換算で、月1.5万～6万円の人件費削減イメージ。<br>
-                    約1～3か月で初期費用を回収できるケースが多いメニューです。
-                </td>
-            </tr>
-            <tr>
-                <td>月次チェック表・フロー図作成</td>
-                <td>7万～20万円</td>
-                <td>
-                    月次・年次のチェック時間を、<br>
-                    担当者合計で毎月3～10時間程度削減。
-                </td>
-                <td>
-                    時給3,000円＋ミス対応コストを含めると、<br>
-                    月1万～4万円相当の負荷軽減になり、<br>
-                    約3～6か月で回収するイメージです。
-                </td>
-            </tr>
-            <tr>
-                <td>消費税区分判定ロジック整理</td>
-                <td>10万～30万円</td>
-                <td>
-                    毎回迷っていた区分確認時間を、<br>
-                    月あたり5～15時間程度削減。
-                </td>
-                <td>
-                    人件費削減に加え、「区分ミスによる追加対応」の<br>
-                    リスク減少も大きなメリットです。<br>
-                    複数年にわたって使えるため、中長期的な投資回収が期待できます。
-                </td>
-            </tr>
-            <tr>
-                <td>Excel自動化（関数／VBA）</td>
-                <td>3万～15万円</td>
-                <td>
-                    月次資料や試算表作成のコピペ作業を、<br>
-                    毎月2～8時間程度削減。
-                </td>
-                <td>
-                    時給3,000円換算で月6,000円～2.4万円相当の削減。<br>
-                    業務の重要度によっては、1～6か月程度での回収が見込めます。
-                </td>
-            </tr>
-            <tr>
-                <td>AI活用ミニ相談（業務プロンプト設計）</td>
-                <td>2万～8万円</td>
-                <td>
-                    業務マニュアル作成・文書整理・チェックリスト作成などの<br>
-                    作業を、スポットで数時間～十数時間削減。
-                </td>
-                <td>
-                    「AIをどう使えばいいか分からない」状態から脱却し、<br>
-                    自事務所の業務に合わせた使い方をその場で言語化します。<br>
-                    小さく試したい方に向いた入口メニューです。
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 中小企業向け -->
-    <h3 id="menu-sme" class="section-title" style="font-size:18px; margin-top:40px;">中小企業・個人事業主向け 単発DXメニュー</h3>
-    <p class="section-sub">「社長の時間」と「経理担当の時間」をどれだけ売上活動に戻せるか、という観点で設計します。</p>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-            <tr>
-                <th>メニュー名</th>
-                <th>導入コスト目安（税込）</th>
-                <th>削減できる作業時間の目安</th>
-                <th>時間の使い方／回収イメージ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>クラウド会計ソフト初期設定サポート</td>
-                <td>5万～15万円</td>
-                <td>
-                    社長や経理担当が「手探りで設定する時間」<br>
-                    10～30時間分の迷い・やり直しを削減。
-                </td>
-                <td>
-                    毎月の入力・確認にかかる時間を短縮し、<br>
-                    空いた時間を営業・商品開発に回せます。<br>
-                    1～3か月ほどで「楽になった」と実感されることが多いメニューです。
-                </td>
-            </tr>
-            <tr>
-                <td>レシート・請求書整理フローの設計</td>
-                <td>3万～10万円</td>
-                <td>
-                    月次の「探す・集める・入力する」時間を、<br>
-                    毎月3～8時間程度削減。
-                </td>
-                <td>
-                    経理が苦手な方ほど効果が出やすく、<br>
-                    「経理を後回しにしてしまうストレス」も減ります。<br>
-                    事業規模によっては1～6か月程度で回収可能です。
-                </td>
-            </tr>
-            <tr>
-                <td>社長用ダッシュボード（数字1枚化）</td>
-                <td>7万～20万円</td>
-                <td>
-                    毎月の数字確認のための集計・資料依頼時間を、<br>
-                    月2～5時間程度削減。
-                </td>
-                <td>
-                    「今月どうだった？」が1枚で分かることで、<br>
-                    意思決定のスピードが上がります。<br>
-                    利益改善につながりやすい、レバレッジの高い投資です。
-                </td>
-            </tr>
-            <tr>
-                <td>Excel自動集計テンプレート作成</td>
-                <td>3万～12万円</td>
-                <td>
-                    売上・仕入・在庫・案件管理など、<br>
-                    毎月の集計作業を2～10時間程度削減。
-                </td>
-                <td>
-                    「担当者しか分からない表」を減らし、<br>
-                    誰でも更新できる形に整えることで、<br>
-                    引き継ぎや人員入替のリスクも下げられます。
-                </td>
-            </tr>
-            <tr>
-                <td>AI活用ミニ相談（社長・経理向け）</td>
-                <td>2万～8万円</td>
-                <td>
-                    メール・議事録・企画書・見積り文面などの<br>
-                    作成時間を、スポットで数時間～十数時間削減。
-                </td>
-                <td>
-                    「経理＋事務＋AI」を組み合わせて、<br>
-                    自社にとっての最初の一歩を一緒に考えます。<br>
-                    まずはお試しでDXを体感したい方に向いています。
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section class="section">
-    <h2 class="section-title">選ばれる理由</h2>
-    <p class="section-sub">「ITに強いだけ」「会計に強いだけ」ではなく、両方の現場と勉強を経験しているからこそ、伝わる言葉でDXを設計できます。</p>
-
     <div class="card-grid">
-        <div class="card">
-            <h3>① 会計実務と監査現場を知っている</h3>
-            <p>
-                現在も会計事務所で客先訪問の監査担当として、<br>
-                日々、現場の回り方やお客様の実態を見ています。
-            </p>
-            <p>
-                「本当はこうしたいけど、現場が回らない」<br>
-                というギャップを理解した上で提案します。
-            </p>
-        </div>
-        <div class="card">
-            <h3>② 税理士試験・会計学習中の視点</h3>
-            <p>
-                簿記論・財務諸表論など、税理士試験科目の学習を通じて、<br>
-                会計・税務の理論面も継続的にインプットしています。
-            </p>
-            <p>
-                そのため、「理論的にはこう」「実務上はこう」という<br>
-                <strong>両方のバランス</strong>を意識したDXが可能です。
-            </p>
-        </div>
-        <div class="card">
-            <h3>③ 元エンジニアとしての設計力</h3>
-            <p>
-                国立工学部ロボット専攻出身で、<br>
-                プログラミングや自動化ロジックの基礎があります。
-            </p>
-            <p>
-                難しいコードを書くのではなく、<br>
-                <strong>「現場で維持できるレベルの仕組み」</strong>を一緒に設計します。
-            </p>
-        </div>
+      <!-- Service 1 -->
+      <div class="card">
+        <div class="card-header">01　クラウド会計・DX設計パック</div>
+        <div class="card-title">クラウド会計が所内に「根付く」ための設計支援</div>
+        <div class="card-title-en">Cloud Accounting & DX Basic Design</div>
+        <div class="price">目安：33万円〜（税別）</div>
+        <ul class="list-dash">
+          <li>現状ヒアリング・業務フローの可視化</li>
+          <li>クラウド会計・証憑保存サービスなどの選定支援</li>
+          <li>所内ルール・分担・チェックフローの設計</li>
+          <li>職員向け運用マニュアルのたたき台作成</li>
+        </ul>
+        <p class="small-note">
+          ※事務所規模や拠点数により変動します。<br>
+          ※既にクラウド会計を導入済みの場合は「再設計」からのご支援も可能です。
+        </p>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="card">
+        <div class="card-header">02　Excel・VBA/RPA自動化パック</div>
+        <div class="card-title">入力・チェック作業を「ボタン1つ」にする自動化</div>
+        <div class="card-title-en">Automation for Routine Tasks</div>
+        <div class="price">目安：15万円〜／1テーマ（税別）</div>
+        <ul class="list-dash">
+          <li>既存Excelの棚卸し・テンプレート整理</li>
+          <li>VBA・関数・Power Query 等による自動化</li>
+          <li>仕訳インポートファイルの自動生成</li>
+          <li>RPA（ロボット）導入の検討・簡易シナリオ作成</li>
+        </ul>
+        <p class="small-note">
+          ※「年調・法定調書」「決算チェック」「請求書発行」など、テーマごとに設計します。
+        </p>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="card">
+        <div class="card-header">03　DX伴走顧問</div>
+        <div class="card-title">毎月少しずつ進める「中長期DXプロジェクト」支援</div>
+        <div class="card-title-en">Ongoing DX Advisory</div>
+        <div class="price">月額：5万円〜（税別）</div>
+        <ul class="list-dash">
+          <li>月1〜2回のオンライン定例ミーティング</li>
+          <li>DXロードマップの進捗管理・優先順位付け</li>
+          <li>Slack/Chatwork 等でのチャット相談</li>
+          <li>所内メンバー向けミニ勉強会の実施</li>
+        </ul>
+        <p class="small-note">
+          ※6ヶ月〜の継続契約を基本としています。<br>
+          ※「まずは3ヶ月のお試し顧問」プランもご用意可能です。
+        </p>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section">
-    <h2 class="section-title">導入の流れ</h2>
-    <p class="section-sub">最初から大きなプロジェクトにせず、1か所ずつ改善していくスタイルです。</p>
+<section id="merit" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">当サポートが選ばれる理由</h2>
+    <div class="sec-title-en">WHY US</div>
+
+    <div class="reason-grid">
+      <div class="card">
+        <div class="reason-num">Reason 01</div>
+        <div class="reason-title">「現場の手触り」を知る会計DX</div>
+        <p class="small-note">
+          単なるシステム導入ではなく、<b>記帳・決算・年調・相続などの現場フロー</b>を理解したうえでDXを設計します。<br>
+          「このチェックを落とすと怖い」「ここだけは紙で残したい」といった現場の感覚も尊重しながら、
+          無理のない変化を一緒に作っていきます。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="reason-num">Reason 02</div>
+        <div class="reason-title">IT・自動化にも強い「二刀流」</div>
+        <p class="small-note">
+          エンジニアバックグラウンドを活かし、<b>Excel/VBA・関数・API連携・RPA</b>など、
+          ツール側の知識も踏まえた提案が可能です。<br>
+          「この作業、そもそもツール側で自動化できますよ」という視点から、
+          余計な工数や二重入力を徹底的に削っていきます。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="reason-num">Reason 03</div>
+        <div class="reason-title">小さく試し、成功体験から広げる</div>
+        <p class="small-note">
+          最初から大掛かりな改革は行いません。<br>
+          まずは<b>1〜2業務で小さくテスト</b>し、効果が出たものを所内全体に横展開していくスタイルです。<br>
+          職員の方々が「本当に楽になった」と感じられる成功体験を重ねることで、
+          DXが自然と「自分ごと」として浸透していきます。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">ご相談の流れ</h2>
+    <div class="sec-title-en">PROCESS</div>
 
     <div class="flow-steps">
-        <div class="flow-step">
-            <span>STEP 1</span>
-            <strong>無料オンライン相談（30～60分）</strong>
-            <p>
-                現在のお悩み・体制・使用ソフトなどをお伺いし、<br>
-                「どこから手をつけると効果が出やすいか」を一緒に考えます。
-            </p>
-        </div>
-        <div class="flow-step">
-            <span>STEP 2</span>
-            <strong>対象業務の絞り込み・ご提案</strong>
-            <p>
-                まずは1～2業務に絞って、改善案・進め方・概算費用をご提案。<br>
-                無理な提案はせず、実現可能な範囲からスタートします。
-            </p>
-        </div>
-        <div class="flow-step">
-            <span>STEP 3</span>
-            <strong>設計・試作・フィードバック</strong>
-            <p>
-                テンプレートやフロー図、簡易ツールなどを作成し、<br>
-                実際の現場で使いながら微調整します。
-            </p>
-        </div>
-        <div class="flow-step">
-            <span>STEP 4</span>
-            <strong>定着支援・マニュアル整備</strong>
-            <p>
-                担当者の方が自走できるよう、<br>
-                簡単なマニュアルやルールも一緒に整えます。
-            </p>
-        </div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 01</div>
+        <div class="flow-step-title">お問い合わせ</div>
+        <p class="small-note">
+          本ページ下部のお問い合わせフォーム、またはメール・LINEよりご連絡ください。<br>
+          ご希望があれば、秘密保持契約（NDA）の締結も可能です。
+        </p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 02</div>
+        <div class="flow-step-title">無料オンライン相談（30〜45分）</div>
+        <p class="small-note">
+          現状の業務フロー・お悩み・利用中ツールなどをヒアリングし、<br>
+          DX・自動化の「入口」となるポイントを一緒に整理します。
+        </p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 03</div>
+        <div class="flow-step-title">ご提案・お見積り</div>
+        <p class="small-note">
+          ヒアリング内容をもとに、<b>優先順位・期間・費用感</b>を整理したご提案書を作成します。<br>
+          ご予算に合わせたプラン調整も柔軟に対応いたします。
+        </p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 04</div>
+        <div class="flow-step-title">ご契約・サポート開始</div>
+        <p class="small-note">
+          ご提案内容にご納得いただけましたらご契約となります。<br>
+          初回キックオフミーティングにて、タスクの洗い出し・スケジュールをすり合わせ、
+          実際のDXプロジェクトをスタートします。
+        </p>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section" id="profile">
-    <h2 class="section-title">プロフィール</h2>
-    <p class="section-sub">「現場のリアル」と「理論」と「技術」をつなぎ合わせるハブとして、ご支援します。</p>
+<section id="profile" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">代表プロフィール</h2>
+    <div class="sec-title-en">PROFILE</div>
 
-    <div class="profile-card">
-        <h3>DX会計サポート担当</h3>
+    <div class="profile-wrap">
+      <div>
+        <div class="profile-photo">Photo<br>Coming Soon</div>
+        <div class="profile-meta">※写真・ロゴなどは後ほど差し替え予定のプレースホルダーです。</div>
+      </div>
+      <div>
+        <div class="profile-name">〇〇 〇〇（仮）</div>
+        <div class="profile-name-en">DX Consultant / Accounting & IT Background</div>
         <div class="profile-meta">
-            税理士法人勤務／客先訪問監査担当／税理士試験（簿記論・財務諸表論）学習中／国立工学部ロボット専攻
+          国立大学 理系学部卒。エンジニアとしてシステム開発・業務改善に従事したのち、<br>
+          会計・税務の世界に転身。会計・税法の学習と並行しながら、<br>
+          会計事務所向けのDX・自動化支援を行っている。<br><br>
+          「現場の負担を減らし、思考する時間を増やすDX」をテーマに、<br>
+          クラウド会計・Excel/VBA・RPA・AIツールを組み合わせた、<br>
+          実務に直結するサポートを行う。
         </div>
-        <p>
-            会計事務所での実務と並行して、税理士試験科目や各種資格の勉強を続けながら、<br>
-            「現場で本当に使えるDXとは何か」を日々探っています。
-        </p>
-        <p>
-            元々は工学部ロボット専攻出身で、プログラミングや制御の考え方に慣れていたため、<br>
-            Excel・VBA・AIツールを組み合わせた「小さな自動化」が得意です。
-        </p>
-        <p>
-            高額なシステムを売り込む立場ではないからこそ、<br>
-            <strong>「いまある人材・ソフト・ファイルを活かしきる」視点</strong>で支援いたします。
-        </p>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="section">
-    <h2 class="section-title">よくあるご質問</h2>
-    <div class="faq-item">
-        <div class="faq-q">Q. まずは小さな相談だけでも大丈夫ですか？</div>
-        <div class="faq-a">
-            はい、むしろ「このExcelだけ」「この業務だけ」といったピンポイントのご相談を歓迎しています。<br>
-            いきなり全体最適を目指すのではなく、小さな成功体験を積み重ねる方が定着しやすいと考えています。
-        </div>
+  <div class="section-inner">
+    <h2 class="sec-title">対応エリア</h2>
+    <div class="sec-title-en">SERVICE AREA</div>
+
+    <div class="area-box">
+      <p>
+        基本的には<b>オンライン（Zoom / Google Meet 等）</b>にて、全国の会計事務所さまに対応しております。<br>
+        首都圏（東京・神奈川・埼玉・千葉）については、条件により訪問でのご支援も可能です。
+      </p>
+      <p class="small-note">
+        ※訪問をご希望の場合、別途交通費・日当を頂戴する場合がございます。<br>
+        ※オンライン前提のため、地方・離島の事務所さまもお気軽にご相談ください。
+      </p>
     </div>
-    <div class="faq-item">
-        <div class="faq-q">Q. ITに詳しくないスタッフばかりですが、ついていけるでしょうか？</div>
-        <div class="faq-a">
-            現在のスキル感に合わせて、関数レベルから、ボタン一つで動くツールまで幅広く設計可能です。<br>
-            また、担当者向けの「操作手順書」や「ショート動画」のような形でもフォローが可能です。
-        </div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-q">Q. 料金はいくらくらいからお願いできますか？</div>
-        <div class="faq-a">
-            このページに記載している金額はあくまで目安です。<br>
-            実際には、対象業務のボリュームや難易度をお伺いした上で、<br>
-            「どこから着手すると投資対効果が高いか」を一緒に整理しながらお見積りします。
-        </div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-q">Q. オンラインのみの対応ですか？</div>
-        <div class="faq-a">
-            基本的にはオンライン（Zoom等）での対応となります。<br>
-            対面が必要な場合は、エリアや頻度に応じて個別にご相談ください。
-        </div>
-    </div>
+  </div>
 </section>
 
-<section class="section" id="contact">
-    <div class="cta-box">
-        <h2>まずは「いまのやり方」の棚卸しから</h2>
-        <p>
-            いきなり大きなDXプロジェクトを立ち上げる必要はありません。<br>
-            1つのExcel、1つの業務からでも十分に変化は生まれます。
-        </p>
-        <p style="margin-bottom: 18px;">
-            「こんな相談をしてもいいのかな？」という段階でも構いませんので、<br>
-            まずはお気軽にご連絡ください。
-        </p>
-        <!-- ここを既存のフォームURLに差し替えてください -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScWoDWK99p2B-OJ8HYn3NIyXj47bMimPS2YYHc_najCh8VwSA/viewform?usp=publish-editor" class="btn-primary">
-            お問い合わせフォームを開く
-        </a>
-        <p style="font-size:11px; margin-top:10px; margin-bottom:0;">
-            ※Googleフォーム等の問い合わせフォームへのリンクに差し替えてご利用ください。
-        </p>
+<section class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="sec-title-en">FAQ</div>
+
+    <div class="qa-item">
+      <div class="qa-q">最初の無料相談だけで終わっても大丈夫ですか？</div>
+      <div class="qa-a small-note">
+        はい、問題ございません。<br>
+        無料相談では、現状の業務フローやお悩みの棚卸しと、DXの優先順位付けまでを行います。<br>
+        ご提案内容を持ち帰って所内で検討いただき、「タイミングが合えばお願いしたい」という形でも大丈夫です。
+      </div>
     </div>
+
+    <div class="qa-item">
+      <div class="qa-q">どの会計ソフトを使っていても対応してもらえますか？</div>
+      <div class="qa-a small-note">
+        メジャーなクラウド会計・オンプレ会計ソフトであれば、基本的に対応可能です。<br>
+        ただし、極めて特殊な業種特化システムの場合は、事前に仕様を確認させていただきながら進めます。
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">情報漏えいが怖いのですが、機密保持はどのように行っていますか？</div>
+      <div class="qa-a small-note">
+        ご希望があれば、秘密保持契約（NDA）を締結したうえでのご支援も可能です。<br>
+        また、顧問先名や個人情報が分からない形でデータを加工いただいたうえで、
+        テンプレート設計・自動化のご相談を行うこともできます。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="section-inner">
+    <h2 class="sec-title">お問い合わせ</h2>
+    <div class="sec-title-en">CONTACT</div>
+
+    <div class="contact-box contact-grid">
+      <div>
+        <p class="contact-sub">
+          会計DX・自動化に関するご相談、サービス内容や料金に関するご質問など、<br>
+          下記フォームよりお気軽にお問い合わせください。
+        </p>
+
+        <!-- ★ メールフォーム部分：GitHub Pagesならフォームサービス(Formspree等)のactionを後から設定してください -->
+        <form method="post" action="">
+          <div>
+            <label for="name">お名前（必須） / Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="office">事務所名 / Firm Name</label>
+            <input type="text" id="office" name="office">
+          </div>
+          <div>
+            <label for="email">メールアドレス（必須） / Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="tel">お電話番号 / Phone</label>
+            <input type="text" id="tel" name="tel">
+          </div>
+          <div>
+            <label for="detail">ご相談内容 / Message</label>
+            <textarea id="detail" name="detail" placeholder="例）クラウド会計は導入済みだが、所内運用が定着していない。年調・法定調書の自動化を検討したい など"></textarea>
+          </div>
+          <div>
+            <label for="prefer">ご連絡方法のご希望 / Preferred Contact</label>
+            <input type="text" id="prefer" name="prefer" placeholder="例）メール希望、平日〇時〜〇時なら電話可 など">
+          </div>
+          <button type="submit" class="btn-primary">入力内容を送信する</button>
+          <div class="input-note">
+            ※まだ送信先のメール処理は設定されていません。フォームサービスを利用する場合は、<br>
+            &nbsp;&nbsp;このフォームの <code>action=""</code> 部分を書き換えてご利用ください。
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <div class="contact-info">
+          <div>お急ぎの方はこちら</div>
+          <div class="tel">TEL：000-0000-0000（仮）</div>
+          <div class="small-note">受付時間：平日 9:00〜18:00</div>
+        </div>
+        <div class="contact-info">
+          <div>LINEでのご相談</div>
+          <a href="#" class="line-btn">LINEで友だち追加（準備中）</a>
+          <div class="small-note">※QRコード・リンクは取得後に差し替えてください。</div>
+        </div>
+        <div class="contact-info">
+          <div>メールアドレス</div>
+          <div class="small-note">info@example.com（仮）</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-    &copy; DX会計サポート. All rights reserved.
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="#privacy">個人情報の取り扱い</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+    <div>© <span id="year"></span> 会計DXサポート</div>
+  </div>
 </footer>
+
+<script>
+  // 年号を自動表示
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
