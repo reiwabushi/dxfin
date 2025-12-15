@@ -3,54 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会計DX・業務効率化サポート | 元銀行系SE×税理士法人スタッフ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>開業税理士のためのDX会計導入支援 | 記帳代行からの解放</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'asahi-blue': '#0056b3', // ロボット風の濃い青
+                        'asahi-light': '#eef6fc', // ロボット風の薄い水色背景
+                        'asahi-text': '#333333',   // 基本テキスト色
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- Base Settings --- */
-        :root {
-            --primary-color: #0f2350; /* 参考サイトに近い深い紺色 */
-            --accent-color: #c5a059;  /* 権威性のあるゴールド */
-            --accent-hover: #e6c885;
-            --text-color: #333;
-            --bg-light: #f4f7f6;
-            --white: #ffffff;
-        }
-
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-color);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            background-color: var(--white);
+            color: #333333;
         }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; padding: 0; }
-        img { max-width: 100%; height: auto; }
-
-        /* --- Utility Classes --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* ロボット風の見出しデザイン */
+        .section-title {
+            @apply text-2xl md:text-3xl font-bold text-asahi-text relative pl-6 md:pl-8 mb-10;
         }
-        .text-center { text-align: center; }
-        .text-gold { color: var(--accent-color); }
-        .font-bold { font-weight: 700; }
-        .section-padding { padding: 80px 0; }
-        .pc-only { display: block; }
-        .sp-only { display: none; }
-
-        @media (max-width: 768px) {
-            .pc-only { display: none; }
-            .sp-only { display: block; }
-            .section-padding { padding: 50px 0; }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 100%;
+            background-color: #0056b3; /* asahi-blue */
+            border-radius: 4px;
         }
-
-        /* --- Components --- */
+        /* CTAボタン */
+        .cta-button-blue {
+            background: linear-gradient(to right, #0056b3, #007bff);
+            transition: all 0.3s ease;
+        }
+        .cta-button-blue:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+        }
+        
         .btn-cta {
             display: inline-block;
             background: linear-gradient(135deg, #b8860b 0%, #ffd700 100%);
@@ -67,409 +70,188 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(184, 134, 11, 0.6);
         }
-
-        /* --- Header --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--primary-color);
-        }
-        .header-cta {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* --- Hero Section (FV) --- */
-        .hero {
-            background: linear-gradient(rgba(15, 35, 80, 0.9), rgba(15, 35, 80, 0.9)), url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80'); /* 会計・ITイメージ画像 */
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding-top: 140px; /* Header height + spacing */
-            padding-bottom: 80px;
-            text-align: center;
-        }
-        
-        /* 権威性バッジエリア */
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .badge {
-            background-color: var(--accent-color);
-            color: #000;
-            padding: 5px 15px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-radius: 2px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            line-height: 1.4;
-            margin-bottom: 20px;
-        }
-        .hero h1 span {
-            background: linear-gradient(to right, #c5a059, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            font-size: 3.2rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-
-        /* --- Trouble Section --- */
-        .trouble {
-            background-color: var(--bg-light);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 50px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto 0;
-        }
-        
-        .trouble-list {
-            background: var(--white);
-            padding: 40px;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            position: relative;
-        }
-        .trouble-list::before {
-            content: 'CHECK';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            color: var(--accent-color);
-            padding: 0 20px;
-            font-weight: bold;
-        }
-        .trouble-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            border-bottom: 1px dashed #ddd;
-            padding-bottom: 15px;
-        }
-        .trouble-item i {
-            color: #d32f2f;
-            margin-right: 15px;
-            margin-top: 5px;
-        }
-
-        /* --- Reason/Strong Points --- */
-        .reason {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-        .reason .section-title {
-            color: var(--white);
-        }
-        .reason-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .reason-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--accent-color);
-            padding: 30px;
-            border-radius: 8px;
-        }
-        .reason-icon {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .reason-head {
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-
-        /* --- Profile (My Specs) --- */
-        .profile-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
-        .profile-img {
-            flex: 1;
-            min-width: 300px;
-        }
-        .profile-img img {
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        .profile-content {
-            flex: 1.5;
-            min-width: 300px;
-        }
-        .profile-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .profile-table th, .profile-table td {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 10px;
-            text-align: left;
-        }
-        .profile-table th {
-            width: 30%;
-            background-color: #f9f9f9;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        .exam-status {
-            display: inline-block;
-            background: #e3f2fd;
-            color: #1565c0;
-            font-size: 0.8rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 5px;
-        }
-
-        /* --- CTA Section --- */
-        .cta-section {
-            background: #f4f4f4;
-            text-align: center;
-        }
-        .cta-box {
-            background: var(--white);
-            border: 3px solid var(--accent-color);
-            padding: 50px 20px;
-            border-radius: 10px;
-        }
-        .cta-tel {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary-color);
-            margin: 20px 0;
-            display: block;
-        }
-        
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #aaa;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .hero h1 span { font-size: 2.2rem; }
-            .badge { font-size: 0.7rem; padding: 3px 8px; }
-            .cta-tel { font-size: 1.8rem; }
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <div class="logo">会計ロボットエンジニアリング</div>
-            <a href="#contact" class="header-cta"><i class="far fa-envelope"></i> 無料相談はこちら</a>
+    <header class="bg-asahi-light relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 pt-16 pb-24 md:py-32 flex flex-col-reverse md:flex-row items-center">
+            <div class="md:w-1/2 z-10 mt-8 md:mt-0">
+                <p class="text-asahi-blue font-bold mb-4 tracking-wider inline-block bg-white px-3 py-1 rounded-full shadow-sm">【毎月3事務所限定】開業税理士のためのDX改革</p>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 text-asahi-text">
+                    超難関試験を突破したあなたが、<br>
+                    なぜ「入力作業」に<br class="md:hidden">追われているのですか？
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    記帳・申告業務を9割自動化。<br>
+                    浮いた時間で売り上げを引き上げます。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="cta-button-blue text-white font-bold py-4 px-8 rounded-md text-lg text-center shadow-md">
+                        無料の自動化診断を受ける <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 mt-6 flex items-center">
+                    <i class="fas fa-user-check text-asahi-blue mr-2"></i>
+                    監修：元大手銀行系SE / 国立工学部ロボット専攻出身 税理士事務所勤務
+                </p>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="w-full h-64 md:h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-xl shadow-xl relative overflow-hidden flex items-center justify-center">
+                    <span class="text-asahi-blue font-bold text-xl"><i class="fas fa-image mr-2"></i><img src="https://github.com/reiwabushi/dxfin/blob/main/Gemini_Generated_Image_r1eg6sr1eg6sr1eg.png" alt="プロフィール写真"></span>
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-asahi-blue opacity-10 rounded-full"></div>
+                    <div class="absolute bottom-10 left-10 w-20 h-20 bg-asahi-blue opacity-10 rounded-full"></div>
+                </div>
+            </div>
         </div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-asahi-blue opacity-5 transform skew-x-12 translate-x-20"></div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="badge-container">
-                <span class="badge">国立工学部ロボット専攻</span>
-                <span class="badge">元最大手銀行系SE</span>
-                <span class="badge">現税理士法人勤務</span>
-                <span class="badge">VBA/MOS上級</span>
-            </div>
-            <h1>ITと会計の「翻訳者」が導く<br><span>失敗しない会計DX</span></h1>
-            <p>システム会社と顧問税理士の「隙間」を埋める、<br class="sp-only">実務直結のIT支援。</p>
-            <a href="#contact" class="btn-cta">30分無料オンライン相談を予約</a>
-        </div>
-    </section>
-
-    <section class="section-padding trouble">
-        <div class="container">
-            <h2 class="section-title">このようなお悩み、<br class="sp-only">抱えていませんか？</h2>
-            <div class="trouble-list">
-                <div class="trouble-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>インボイス・電帳法対応で、経理の手間が逆増してしまった</div>
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="section-title">
+                こんな「矛盾」に苦しんでいませんか？
+            </h2>
+            <p class="mb-10 text-gray-600">日々、真摯に業務に向き合っている先生ほど、このような悩みを抱えがちです。</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-asahi-blue hover:shadow-lg transition-shadow">
+                    <div class="text-red-500 text-3xl mb-4"><i class="fas fa-business-time"></i></div>
+                    <h3 class="font-bold text-lg mb-3 text-asahi-text">時間が消えていく</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">顧問先が増えるほど、自分の時間がなくなる。時給換算するとアルバイト以下になっていませんか？</p>
                 </div>
-                <div class="trouble-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>クラウド会計を入れたいが、顧問税理士がITに疎く相談できない</div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-asahi-blue hover:shadow-lg transition-shadow">
+                    <div class="text-red-500 text-3xl mb-4"><i class="fas fa-users-slash"></i></div>
+                    <h3 class="font-bold text-lg mb-3 text-asahi-text">人手不足のジレンマ</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">職員を雇う余裕も、教育する時間もない。通帳転記や資料督促で自分一人がパンク寸前。</p>
                 </div>
-                <div class="trouble-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>システム会社の提案は専門用語ばかりで、自社に合うか判断できない</div>
-                </div>
-                <div class="trouble-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>複雑なExcel集計作業が属人化しており、ミスも怖い</div>
-                </div>
-                <div class="trouble-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>高額なツールを導入したが、現場が使いこなせていない</div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-asahi-blue hover:shadow-lg transition-shadow">
+                    <div class="text-red-500 text-3xl mb-4"><i class="fas fa-file-invoice"></i></div>
+                    <h3 class="font-bold text-lg mb-3 text-asahi-text">「便利な事務屋」扱い</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">専門知識を使ったコンサルをしたいのに、実際は領収書の整理に追われている。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding reason">
-        <div class="container">
-            <h2 class="section-title">選ばれる3つの理由</h2>
-            <div class="reason-grid">
-                <div class="reason-card">
-                    <div class="reason-icon"><i class="fas fa-laptop-code"></i></div>
-                    <div class="reason-head">元・銀行系SEの<br>堅実な技術力</div>
-                    <p>国立理系卒の論理的思考と、ミスが許されない金融システム開発で培ったスキル。システムの選定から、API連携、Excel VBA・RPAロボットによる自動化まで、技術的な最適解を導きます。</p>
+    <section class="py-20 bg-asahi-light">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-asahi-text leading-tight">
+                税理士の仕事は<br class="md:hidden">「過去の数字の入力」ではありません。
+            </h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border-2 border-red-100 text-left md:text-center relative">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-1 text-sm font-bold rounded-full">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>警告
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <div class="reason-head">現役・税理士法人勤務の<br>現場感覚</div>
-                    <p>日々の記帳代行や決算の実務を経験。税理士・司法書士を目指し法律・税務を深く学んでいるため、最新の法改正に対応しつつ、「現場が本当に楽になる」フローを構築できます。</p>
+                <p class="text-gray-700 leading-8 mb-6 mt-4">
+                    しかし現実は、未提出資料の督促、手書きの日報入力、合わない残高の修正…。<br>
+                    このままアナログな経理を続けても、あなたの単価は一生上がりません。<br>
+                    <strong class="text-red-600 bg-red-50 px-1">それは「経営者」の仕事ではなく、「高級な事務員」の仕事だからです。</strong>
+                </p>
+                <p class="font-bold text-asahi-text">
+                    今すぐ「仕組み」を変えなければ、あなたの貴重なキャリアは<br class="hidden md:block">単純作業で消費され続けてしまいます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-asahi-text">
+                    <span class="text-asahi-blue">元SEが設計した「会計ロボットエンジニアリング」</span>が<br>
+                    あなたの事務所を救います
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    API連携、AI-OCR、RPA…。ITの力を使えば、あなたが手作業で行っている業務の8割は自動化可能です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-asahi-light p-8 rounded-xl transition-all hover:shadow-lg text-center border-b-4 border-asahi-blue">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i class="fas fa-robot text-asahi-blue text-4xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-4 text-asahi-text">入力作業を90%削減</h3>
+                    <p class="text-gray-600 leading-relaxed">通帳、クレカ、Amazon…すべて自動連動。あなたは「承認ボタン」を押すだけ。手入力の苦痛から解放されます。</p>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-icon"><i class="fas fa-comments"></i></div>
-                    <div class="reason-head">専門用語を使わない<br>「翻訳」サポート</div>
-                    <p>システム会社の一方的な提案とは違います。ITに苦手意識がある方にも分かりやすく説明し、お客様の業務フローに寄り添って二人三脚で進めます。</p>
+                <div class="bg-asahi-light p-8 rounded-xl transition-all hover:shadow-lg text-center border-b-4 border-asahi-blue">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i class="fas fa-user-tie text-asahi-blue text-4xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-4 text-asahi-text">文句を言わない<br>ベテラン職員</h3>
+                    <p class="text-gray-600 leading-relaxed">システムは24時間365日働きます。採用コストも教育コストもゼロ。退職リスクも人間関係のストレスもありません。</p>
+                </div>
+                <div class="bg-asahi-light p-8 rounded-xl transition-all hover:shadow-lg text-center border-b-4 border-asahi-blue">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i class="fas fa-chart-line text-asahi-blue text-4xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-4 text-asahi-text">高単価コンサルへ<br>シフト</h3>
+                    <p class="text-gray-600 leading-relaxed">空いた時間で、予実管理や資金繰りの提案が可能に。これが本来、あなたがやりたかった税理士の姿のはずです。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="container">
-            <h2 class="section-title">代表プロフィール</h2>
-            <div class="profile-container">
-                <div class="profile-img">
-                    <img src="https://reiwabushi.github.io/dxfin/photo23png.png" alt="プロフィール写真">
+    <section class="py-20 bg-asahi-light">
+        <div class="max-w-5xl mx-auto px-4">
+             <h2 class="section-title">
+                なぜ「元SE」が税理士業界のDXを行うのか
+            </h2>
+            <div class="bg-white rounded-2xl shadow-md p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/3 text-center flex-shrink-0">
+                    <div class="w-48 h-48 bg-gray-200 rounded-full mx-auto flex items-center justify-center mb-4 border-4 border-asahi-blue shadow-sm relative overflow-hidden">
+                         <img src="https://reiwabushi.github.io/dxfin/photo23png.png" alt="プロフィール写真"></i>
+                         </div>
+                    <p class="font-bold text-asahi-text">開発者プロフィール</p>
+                    <p class="text-asahi-blue text-sm font-bold">国立大学工学部卒 / 元銀行系SE / <br>税理士法人勤務 / 宅建・日商簿記2級<br> 地方公会計検定 ・巡回監査士補消費税法他<br>MOSVBAエキスパート  / 税理士司法書士受験生</p>
                 </div>
-                <div class="profile-content">
-                    <h3 class="font-bold" style="font-size: 1.5rem; margin-bottom: 10px;">会計ロボ専門エンジニア<br>松本 武士</h3>
-                    <p style="margin-bottom: 20px;">
-                        「システムありき」ではなく、「人のためのDX」を。<br>
-                        エンジニアの技術力と、会計人の現場力で、あなたの会社のバックオフィスを強くします。
+                <div class="md:w-2/3">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-asahi-blue leading-tight">「エンジニアの視点で見ると、税理士業界は宝の山でした」</h3>
+                    <p class="leading-relaxed mb-4 text-gray-700">
+                        初めまして。松本武士と申します。私は国立大学工学部ロボット専攻卒業後、元システムエンジニアとして大手銀行系システム開発に従事し、現在は税理士法人に勤務しています。
                     </p>
-                    
-                    <table class="profile-table">
-                        <tr>
-                            <th>学歴</th>
-                            <td>国立大学 工学部 ロボット専攻 卒業</td>
-                        </tr>
-                        <tr>
-                            <th>経歴</th>
-                            <td>最大手銀行系システムエンジニア<br>（大規模金融システム開発現場）</td>
-                        </tr>
-                        <tr>
-                            <th>現職</th>
-                            <td>税理士法人スタッフ（会計・税務実務）</td>
-                        </tr>
-                        <tr>
-                            <th>保有資格</th>
-                            <td>
-                                ・宅地建物取引士<br>
-                                ・日商簿記2級<br>
-                                ・地方公会計検定<br>
-                                ・MOS Excel上級 (Expert)<br>
-                                ・VBAエキスパート
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>挑戦中</th>
-                            <td>
-                                税理士試験 <span class="exam-status">受験生</span><br>
-                                行政書士試験 <span class="exam-status">受験生</span><br>
-                                司法書士試験 <span class="exam-status">受験生</span>
-                            </td>
-                        </tr>
-                    </table>
+                    <p class="leading-relaxed mb-4 text-gray-700">
+                        業界に入って驚いたのは、あまりにも「非効率な手作業」が常識化していることです。Excelへの手入力、紙の資料整理…エンジニアから見れば、これらは全てプログラムで代替可能です。<br>
+                    </p>
+                    <p class="leading-relaxed text-gray-700 font-bold">
+                        私の持つエンジニアとしての知見（構造化・自動化）と、現場で培った税務知識を掛け合わせることで、同業の先生方を「記帳代行の奴隷」から解放できると確信しています。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding" style="background-color: #fff;">
-        <div class="container">
-            <h2 class="section-title">ご提供サービス</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
-                    <h4 class="font-bold text-gold"><i class="fas fa-cloud"></i> クラウド会計導入支援</h4>
-                    <p class="text-sm">TKC、freeeやマネーフォワードの選定、初期設定、データ移行、社内研修まで丸ごとサポート。</p>
-                </div>
-                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
-                    <h4 class="font-bold text-gold"><i class="fas fa-robot"></i> Excel業務自動化 (VBA)</h4>
-                    <p class="text-sm">複雑な集計作業をマクロやRPAロボットでボタン一つに。「脱・属人化」を実現します。</p>
-                </div>
-                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
-                    <h4 class="font-bold text-gold"><i class="fas fa-link"></i> 周辺システム連携</h4>
-                    <p class="text-sm">経費精算、勤怠、請求書システムと会計ソフトのAPI連携構築。</p>
-                </div>
+    <section id="contact" class="py-20 bg-asahi-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            
+            <div class="bg-white/10 p-6 rounded-lg border border-white/30 inline-block mb-12">
+                <h3 class="text-xl font-bold mb-2 flex items-center justify-center">
+                    <i class="fas fa-exclamation-circle text-yellow-400 mr-2"></i>
+                    導入サポートは毎月3事務所様限定です
+                </h3>
+                <p class="text-blue-100 text-sm">
+                    単なるツールの販売ではなく、先生の事務所の業務フローに入り込んでコンサルティングを行うため、対応できる数に限りがあります。<br>
+                    （※商圏保護のため、近隣エリアの競合事務所様はお断りする場合がございます）
+                </p>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="section-padding cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <h2 style="margin-bottom: 10px;">まずは無料相談で、現状をお聞かせください</h2>
-                <p>ITと会計のプロが、御社に最適な効率化プランを診断します。</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">まずは「無料診断」で<br>削減できる時間を知ってください</h2>
+            <p class="mb-10 text-xl text-blue-100">
+                あなたの事務所のボトルネックを特定し、<br>
+                最適な自動化プランをシミュレーションします。
+            </p>
+            
+
                 
-                
-                <a href="https://forms.gle/5tGGccF8VNPsXM7X8" class="btn-cta" style="width: 80%; max-width: 500px;">
+<a href="https://forms.gle/5tGGccF8VNPsXM7X8" class="btn-cta" style="width: 80%; max-width: 500px;">
                     <i class="far fa-envelope"></i> 24時間受付 お問い合わせフォーム
                 </a>
-            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
+    <footer class="bg-asahi-text text-gray-400 py-10 text-center text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="mb-4 font-bold text-white text-lg">会計ロボットエンジニアリング</p>
             <p>&copy; 2025 会計ロボットエンジニアリング. All Rights Reserved.</p>
         </div>
     </footer>
